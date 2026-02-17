@@ -58,9 +58,20 @@ Business rules:
 ## Run Locally
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/BankAccountManagement.git
-cd BankAccountManagement
-mvn spring-boot:run
+git clone https://github.com/ErmaoCyber/meeting-room-reservation-api.git
+cd MeetingRoomBooking
+```
+
+Restore packages:
+
+```bash
+dotnet restore
+```
+
+Run the API:
+
+```bash
+dotnet run
 ```
 
 Server:
