@@ -1,63 +1,85 @@
-# Bank Account Management System
+# bank-account-service-api
 
-> A Spring Boot REST API implementing banking account management with transactional consistency and layered architecture.
+A Spring Boot REST API implementing banking account operations with transactional consistency and layered architecture.
 
 ---
 
-## Features
+## Overview
 
-* Create & manage bank accounts (Savings / Checking)
-* Deposit, withdraw, and transfer funds
-* Transaction history (audit‑style records)
-* Overdraft protection (business rule enforcement)
-* Validation handled in service layer (not controllers)
+The **bank-account-service-api** is a backend service that simulates core banking workflows such as account creation, deposits, withdrawals, and inter-account transfers.
+
+The system focuses on enforcing financial business rules and maintaining data integrity. All monetary operations are executed transactionally to ensure balances remain consistent even under concurrent requests.
+
+Key aspects of the project:
+- Transactional business logic
+- Layered backend architecture
+- RESTful API design
+- Persistent storage using JPA/Hibernate
+- Audit-style transaction history
+
+---
+
+## Key Features
+
+- Create and manage customer bank accounts
+- Deposit and withdraw funds
+- Transfer money between accounts
+- Transaction history records (immutable)
+- Overdraft prevention (business rule enforcement)
+- Validation handled in the service layer
 
 ---
 
 ## Tech Stack
 
-* **Java 17**
-* **Spring Boot**
-* **Spring Data JPA (Hibernate)**
-* **PostgreSQL / H2**
-* **Maven**
-* RESTful API
+- **Java 17**
+- **Spring Boot**
+- **Spring Data JPA (Hibernate)**
+- **PostgreSQL / H2**
+- **Maven**
+- RESTful API
 
 ---
 
 ## Architecture
 
-Layered architecture:
+The project follows a layered architecture:
 
-```
 Controller → Service → Repository → Database
-```
 
-* Controllers: request/response only
-* Services: business rules & transactions
-* Repositories: persistence
+Responsibilities:
+- **Controllers**: HTTP request/response handling
+- **Services**: business rules, transactions, and validation
+- **Repositories**: database persistence
 
-Key design choice: financial operations are executed in the **service layer** to guarantee atomic updates and prevent inconsistent balances.
+Key design decision: financial operations are handled in the **service layer** to guarantee atomic updates and prevent inconsistent balances.
 
 ---
 
 ## Core Domain
 
-* **Customer** – account owner
-* **Account** – balance & status
-* **Transaction** – immutable financial record
+Entities:
+- **Customer** — account owner
+- **Account** — balance and status
+- **Transaction** — immutable financial record
 
-Business rules:
-
-* No withdrawal beyond balance
-* Transfers update two accounts atomically
-* Transactions are never edited (auditability)
+Business Rules:
+- Withdrawals cannot exceed available balance
+- Transfers update two accounts atomically
+- Transactions are never modified (auditability)
 
 ---
 
 ## Run Locally
 
+### Prerequisites
+- Java 17+
+- Maven 3.8+
+
+### Steps
+
 ```bash
+<<<<<<< Updated upstream
 git clone https://github.com/ErmaoCyber/meeting-room-reservation-api.git
 cd MeetingRoomBooking
 ```
@@ -72,52 +94,76 @@ Run the API:
 
 ```bash
 dotnet run
+=======
+git clone https://github.com/ErmaoCyber/bank-account-service-api.git
+cd bank-account-service-api
+mvn spring-boot:run
+>>>>>>> Stashed changes
 ```
 
-Server:
-
-```
-http://localhost:8080
-```
-
-(Optional) Configure PostgreSQL in `application.properties`.
+The application will start on a local development port.  
+Check the console output after running to see the exact URL.
 
 ---
 
-## Example API
+## Example API Endpoints
 
-**Create Account**
-
-```http
+**Create account**
+```
 POST /api/accounts
 ```
 
 **Deposit**
-
-```http
+```
 POST /api/transactions/deposit
 ```
 
 **Transfer**
-
-```http
+```
 POST /api/transactions/transfer
 ```
 
 ---
 
-## What This Project Shows
+## What This Project Demonstrates
 
-* Backend system design with Spring Boot
-* Separation of concerns (layered architecture)
-* Transactional consistency
-* Real‑world business rule implementation
-* Ready for future React admin frontend
+- Backend service design using Spring Boot
+- Separation of concerns with layered architecture
+- Transactional consistency using Spring transactions
+- Implementation of financial business rules
+- REST API design ready for frontend integration
 
 ---
 
-Swagger UI: http://localhost:8080/swagger-ui/index.html
+## API Documentation (Swagger)
 
-## API Preview
+The API includes an interactive Swagger UI for exploring endpoints.
 
-![Swagger UI](images/swagger.png)
+After starting the application:
+
+```
+mvn spring-boot:run
+```
+
+Open your browser and navigate to:
+
+```
+http://localhost:<port>/swagger-ui/index.html
+```
+
+The port number will be shown in the console when the server starts.
+
+Example (my local environment):
+```
+http://localhost:8080/swagger-ui/index.html
+```
+
+From Swagger you can:
+- View available endpoints
+- Send requests directly from the browser
+- Inspect request and response models
+
+<img src="images/swagger.png" width="900" alt="Swagger UI preview">
+
+---
+
