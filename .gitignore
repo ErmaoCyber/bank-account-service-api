@@ -1,0 +1,41 @@
+# ===== Java / Maven =====
+target/
+build/
+
+# compiled bytecode
+*.class
+
+# packaged files
+*.jar
+*.war
+*.ear
+
+# ===== IntelliJ =====
+.idea/
+*.iml
+
+# ===== Eclipse =====
+.project
+.classpath
+.settings/
+
+# ===== VSCode =====
+.vscode/
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# ===== Logs =====
+*.log
+
+# ===== Database =====
+*.db
+*.sqlite
+*.sqlite3
+
+# ===== Env =====
+.env
+
+# archive
+*.zip
